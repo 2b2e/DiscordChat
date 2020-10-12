@@ -43,7 +43,7 @@ public class DiscordChatListener extends ListenerAdapter {
     }
 
      private boolean processPlayerListCommand(String message) {
-        if (message.equalsIgnoreCase(Main.config.getString("commandPrefix") + "playerlist") && Main.config.getBoolean("playerListCommand")) {
+        if (message.equalsIgnoreCase(Main.config.getString("commandPrefix") + "l") && Main.config.getBoolean("playerListCommand")) {
             if (Server.getInstance().getOnlinePlayers().isEmpty()) {
                 API.sendMessage(Main.config.getString("command_playerlist_empty"));
             } else {
