@@ -14,8 +14,11 @@ import cn.nukkit.utils.TextFormat;
 
 public class PlayerListener implements Listener {
 
-    private String lastMessage;
     private String lastName;
+    private String lastMessage;
+    private String lastMessage2;
+    private String lastMessage3;
+    private String lastMessage4;
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
@@ -44,6 +47,12 @@ public class PlayerListener implements Listener {
             if (Main.config.getBoolean("spamFilter")) {
                 if (msg.startsWith("Horion - the best minecraft bedrock utility mod - ")) return;
                 if (msg.equals(lastMessage) && name.equals(lastName)) return;
+                if (msg.equals(lastMessage2) && name.equals(lastName)) return;
+                if (msg.equals(lastMessage3) && name.equals(lastName)) return;
+                if (msg.equals(lastMessage4) && name.equals(lastName)) return;
+                lastMessage4 = lastMessage3;
+                lastMessage3 = lastMessage2;
+                lastMessage2 = lastMessage;
                 lastMessage = msg;
                 lastName = name;
                 msg = msg.replace("@", "");
