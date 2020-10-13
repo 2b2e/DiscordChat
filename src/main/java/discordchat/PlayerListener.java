@@ -22,20 +22,20 @@ public class PlayerListener implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        if (Main.config.getBoolean("joinMessages")) API.sendMessage("**" + Server.getInstance().getOnlinePlayers().size() + '/' + Server.getInstance().getMaxPlayers() + "**" + Main.config.getString("info_player_joined").replace("%player%", e.getPlayer().getName()));
+        if (Main.config.getBoolean("joinMessages")) API.sendMessage("**" + "[" + Server.getInstance().getOnlinePlayers().size() + '/' + Server.getInstance().getMaxPlayers() + "[" + Main.config.getString("info_player_joined").replace("%player%", e.getPlayer().getName()));
 
     }
 
     @EventHandler
     public void onQuit(PlayerQuitEvent e) {
         if (Main.config.getBoolean("quitMessages") && e.getPlayer().spawned) {
-            API.sendMessage("**" + Server.getInstance().getOnlinePlayers().size() + '/' + Server.getInstance().getMaxPlayers() + "**" + Main.config.getString("info_player_left").replace("%player%", e.getPlayer().getName()));
+            API.sendMessage("[" + Server.getInstance().getOnlinePlayers().size() + '/' + Server.getInstance().getMaxPlayers() + "]" + Main.config.getString("info_player_left").replace("%player%", e.getPlayer().getName()));
         }
     }
 
     @EventHandler(ignoreCancelled = true)
     public void onDeath(PlayerDeathEvent e) {
-        if (Main.config.getBoolean("deathMessages")) API.sendMessage("**" + Server.getInstance().getOnlinePlayers().size() + '/' + Server.getInstance().getMaxPlayers() + "**" + Main.config.getString("info_player_death").replace("%death_message%", TextFormat.clean(textFromContainer(e.getDeathMessage()))));
+        if (Main.config.getBoolean("deathMessages")) API.sendMessage("[" + Server.getInstance().getOnlinePlayers().size() + '/' + Server.getInstance().getMaxPlayers() + "]" + Main.config.getString("info_player_death").replace("%death_message%", TextFormat.clean(textFromContainer(e.getDeathMessage()))));
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -57,7 +57,7 @@ public class PlayerListener implements Listener {
                 lastName = name;
                 msg = msg.replace("@", "");
             }
-            API.sendMessage(TextFormat.clean("**" + Server.getInstance().getOnlinePlayers().size() + '/' + Server.getInstance().getMaxPlayers() + "**" + name + " \u00BB " + msg));
+            API.sendMessage(TextFormat.clean("[" + Server.getInstance().getOnlinePlayers().size() + '/' + Server.getInstance().getMaxPlayers() + "]" + name + " \u00BB " + msg));
         }
     }
 
