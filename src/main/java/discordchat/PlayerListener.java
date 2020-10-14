@@ -22,7 +22,7 @@ public class PlayerListener implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        if (Main.config.getBoolean("joinMessages")) API.sendMessage("**[" + (Server.getInstance().getOnlinePlayers().size() + 1) + '/' + Server.getInstance().getMaxPlayers() + "]** " + Main.config.getString("info_player_joined").replace("%player%", e.getPlayer().getName()));
+        if (Main.config.getBoolean("joinMessages")) API.sendMessage("**[" + Server.getInstance().getOnlinePlayers().size() + '/' + Server.getInstance().getMaxPlayers() + "]** " + Main.config.getString("info_player_joined").replace("%player%", e.getPlayer().getName()));
 
     }
 
@@ -35,7 +35,7 @@ public class PlayerListener implements Listener {
 
     @EventHandler(ignoreCancelled = true)
     public void onDeath(PlayerDeathEvent e) {
-        if ("**[" + (Server.getInstance().getOnlinePlayers().size() - 1) + '/' + Server.getInstance().getMaxPlayers() + "]** " + Main.config.getBoolean("deathMessages")) API.sendMessage(Main.config.getString("info_player_death").replace("%death_message%", TextFormat.clean(textFromContainer(e.getDeathMessage()))));
+        if (Main.config.getBoolean("deathMessages")) API.sendMessage(("**[" + Server.getInstance().getOnlinePlayers().size() + '/' + Server.getInstance().getMaxPlayers() + "]** " + Main.config.getString("info_player_death").replace("%death_message%", TextFormat.clean(textFromContainer(e.getDeathMessage()))));
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -57,7 +57,7 @@ public class PlayerListener implements Listener {
                 lastName = name;
                 msg = msg.replace("@", "");
             }
-            API.sendMessage("**[" + (Server.getInstance().getOnlinePlayers().size() - 1) + '/' + Server.getInstance().getMaxPlayers() + "]** " + name + " \u00BB " + msg));
+            API.sendMessage("**[" + Server.getInstance().getOnlinePlayers().size() + '/' + Server.getInstance().getMaxPlayers() + "]** " + name + " \u00BB " + msg));
         }
     }
 
