@@ -29,7 +29,7 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onQuit(PlayerQuitEvent e) {
         if (Main.config.getBoolean("quitMessages") && e.getPlayer().spawned) {
-            API.sendMessage("[" + Server.getInstance().getOnlinePlayers().size() - 1 + '/' + Server.getInstance().getMaxPlayers() + "]" + Main.config.getString("info_player_left").replace("%player%", e.getPlayer().getName()));
+            API.sendMessage("**[" + Server.getInstance().getOnlinePlayers().size() - 1 + '/' + Server.getInstance().getMaxPlayers() + "]**" + Main.config.getString("info_player_left").replace("%player%", e.getPlayer().getName()));
         }
     }
 
